@@ -1,6 +1,6 @@
 // Completed 11 APRIL 2024
 
-// LINK: https://judge.beecrowd.com/pt/problems/view/2863
+// LINK: https://judge.beecrowd.com/problems/view/2863
 
 #include <stdio.h>
 
