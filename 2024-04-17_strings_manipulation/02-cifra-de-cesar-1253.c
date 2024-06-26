@@ -22,31 +22,16 @@ int main() {
         scanf("%d", &num);
         
         for (int j=0; j<strlen(str); j++) {
-            char t;
-            str[j] -= num;
-            
-            t = str[j];
-            
-            if (t < 65) {
-                str[j] += 26;
-            } 
-        }
-        
-        // NÃO SEI PQ O JEITO ABAIXO NÃO FUNCIONA
-        /* 
-        for (int j=0; j<strlen(str); j++) {
             
             str[j] -= num;
             
-            if (str[j] - num < 65) {
+            if (str[j] < 65) {
                 str[j] += 26;
             } 
         }
-        */
         
         printf("%s\n", str);
     }
-    
     
     return 0;
 }
