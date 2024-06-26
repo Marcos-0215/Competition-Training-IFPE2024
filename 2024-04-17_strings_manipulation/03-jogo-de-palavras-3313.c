@@ -5,12 +5,11 @@
 // Finished by ?? Apr 2024
 // Time spent: ??
 
-/* **************************************
-SOLUÇÃO ERRADA (manual, tentando fazer o algoritmo sozinho, sem perceber que a ordem alfabética se aplicada além do 1o caractere = ordem lexicográfica)
-******************************************* */
 
 #include <stdio.h>
 #include <string.h>
+
+void rotacionar (char str[]);
 
 int main() {
     
@@ -29,48 +28,40 @@ int main() {
         }
         
         cont++;
-
+        
         int len = strlen(str);
-        int max = 1;
-        int min = 127;
-        int indexMax, indexMin;
+        char min[100001];
+        char max[100001];
+        strcpy(min, str);
+        strcpy(max, str);
         
         for (int i=0; i<len; i++) {
+            rotacionar(str);
             
-            if (str[i] > max) {
-                max = str[i];
-                indexMax = i;
+            if (strcmp(str, min) < 0) {
+                strcpy(min, str);
             }
             
-            if (str[i] < min) {
-                min = str[i];
-                indexMin = i;
+            if (strcmp(str, max) > 0) {
+                strcpy(max, str);
             }
+
         }
         
-        char caso1[100001] = "";
-        
-        for (int i=0; i<len-indexMin; i++) {
-            caso1[i] = str[i+indexMin];
-        }
-        
-        for (int i=len-indexMin; i<len; i++) {
-            caso1[i] = str[i-(len-indexMin)];
-        }
-        
-        char caso2[100001] = "";
-        
-        for (int i=0; i<len-indexMax; i++) {
-            caso2[i] = str[i+indexMax];
-        }
-        
-        for (int i=len-indexMax; i<len; i++) {
-            caso2[i] = str[i-(len-indexMax)];
-        }
-        
-        printf("Caso %d: %s %s\n", cont, caso1, caso2);
+        printf("Caso %d: %s %s\n", cont, min, max);
 
     }
     
     return 0;
+}
+
+void rotacionar (char str[]) {
+    char carac0 = str[0];
+    int len = strlen(str);
+    
+    for (int i=1; i<len; i++) {
+        str[i-1] = str[i];
+    }
+    
+    str[len - 1] = carac0;
 }
